@@ -219,6 +219,12 @@ curl "http://localhost:8080/cache/stats"
 ./bin/ip-resolver -timeout 10s
 ```
 
+## Curl
+```bash
+$ sudo curl -L "https://github.com/darkjinnee/go-ip-resolver/releases/download/v1.0.0/ip-resolver-linux" -o /usr/local/bin/go-ip-resolver 
+$ sudo chmod +x /usr/local/bin/go-ip-resolver
+```
+
 ## Postman коллекция
 
 Для удобного тестирования API включена готовая Postman коллекция:
