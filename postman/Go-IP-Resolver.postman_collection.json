@@ -1,0 +1,588 @@
+{
+	"info": {
+		"_postman_id": "a1b2c3d4-e5f6-7890-abcd-ef1234567890",
+		"name": "Go IP Resolver API",
+		"description": "Коллекция API запросов для Go IP Resolver - универсального сервера резолвинга IP адресов доменов с конфигурируемыми группами.",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "12345678"
+	},
+	"item": [
+		{
+			"name": "Groups",
+			"item": [
+				{
+					"name": "Get All Groups",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/groups",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"groups"
+							]
+						},
+						"description": "Получить список всех доступных групп доменов"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/groups",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"groups"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"groups\": [\n    \"youtube\",\n    \"google\",\n    \"github\",\n    \"instagram\",\n    \"openai\",\n    \"copilot\",\n    \"cursor\"\n  ]\n}"
+						}
+					]
+				}
+			],
+			"description": "Операции с группами доменов"
+		},
+		{
+			"name": "Resolve",
+			"item": [
+				{
+					"name": "Resolve Group - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group={{group_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								}
+							]
+						},
+						"description": "Получить все IP адреса (IPv4 + IPv6) для указанной группы доменов"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve?group=youtube",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "youtube"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"domain\": \"youtube.com\",\n    \"ips\": [\n      \"142.251.36.206\",\n      \"2a00:1450:4016:809::200e\"\n    ]\n  },\n  {\n    \"domain\": \"www.youtube.com\",\n    \"ips\": [\n      \"142.251.36.238\",\n      \"142.251.37.14\",\n      \"172.217.16.174\",\n      \"142.251.36.174\",\n      \"142.251.36.206\",\n      \"2a00:1450:4016:80c::200e\",\n      \"2a00:1450:4016:808::200e\",\n      \"2a00:1450:4016:809::200e\",\n      \"2a00:1450:4016:80a::200e\"\n    ]\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Resolve Group - IPv4 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group={{group_name}}&type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								},
+								{
+									"key": "type",
+									"value": "ipv4",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить только IPv4 адреса для указанной группы доменов"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve?group=youtube&type=ipv4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "youtube"
+										},
+										{
+											"key": "type",
+											"value": "ipv4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"domain\": \"youtube.com\",\n    \"ips\": [\n      \"142.251.36.206\"\n    ]\n  },\n  {\n    \"domain\": \"www.youtube.com\",\n    \"ips\": [\n      \"142.251.36.238\",\n      \"142.251.37.14\",\n      \"172.217.16.174\",\n      \"142.251.36.174\",\n      \"142.251.36.206\"\n    ]\n  }\n]"
+						}
+					]
+				},
+				{
+					"name": "Resolve Group - IPv6 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group={{group_name}}&type=ipv6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								},
+								{
+									"key": "type",
+									"value": "ipv6",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить только IPv6 адреса для указанной группы доменов"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve?group=youtube&type=ipv6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "youtube"
+										},
+										{
+											"key": "type",
+											"value": "ipv6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "[\n  {\n    \"domain\": \"youtube.com\",\n    \"ips\": [\n      \"2a00:1450:4016:809::200e\"\n    ]\n  },\n  {\n    \"domain\": \"www.youtube.com\",\n    \"ips\": [\n      \"2a00:1450:4016:80c::200e\",\n      \"2a00:1450:4016:808::200e\",\n      \"2a00:1450:4016:809::200e\",\n      \"2a00:1450:4016:80a::200e\"\n    ]\n  }\n]"
+						}
+					]
+				}
+			],
+			"description": "Операции резолвинга IP адресов для групп доменов"
+		},
+		{
+			"name": "Resolve All",
+			"item": [
+				{
+					"name": "Resolve All Groups - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-all"
+							]
+						},
+						"description": "Получить все IP адреса (IPv4 + IPv6) для всех групп доменов сразу"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"youtube\": [\n    {\n      \"domain\": \"youtube.com\",\n      \"ips\": [\n        \"142.251.36.206\",\n        \"2a00:1450:4016:809::200e\"\n      ]\n    }\n  ],\n  \"google\": [\n    {\n      \"domain\": \"google.com\",\n      \"ips\": [\n        \"142.251.36.174\",\n        \"2a00:1450:4016:808::200e\"\n      ]\n    }\n  ],\n  \"github\": [\n    {\n      \"domain\": \"github.com\",\n      \"ips\": [\n        \"140.82.121.4\"\n      ]\n    }\n  ]\n}"
+						}
+					]
+				},
+				{
+					"name": "Resolve All Groups - IPv4 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-all?type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ipv4",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить только IPv4 адреса для всех групп доменов"
+					},
+					"response": []
+				},
+				{
+					"name": "Resolve All Groups - IPv6 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-all?type=ipv6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ipv6",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить только IPv6 адреса для всех групп доменов"
+					},
+					"response": []
+				}
+			],
+			"description": "Операции резолвинга IP адресов для всех групп доменов"
+		},
+		{
+			"name": "Cache",
+			"item": [
+				{
+					"name": "Get Cache Statistics",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/cache/stats",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"cache",
+								"stats"
+							]
+						},
+						"description": "Получить статистику кэша: количество групп, общее количество записей, детали по группам"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/cache/stats",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"cache",
+										"stats"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n  \"groups_count\": 7,\n  \"total_entries\": 21,\n  \"groups\": {\n    \"youtube\": 3,\n    \"google\": 3,\n    \"github\": 3,\n    \"instagram\": 3,\n    \"openai\": 3,\n    \"copilot\": 3,\n    \"cursor\": 3\n  }\n}"
+						}
+					]
+				}
+			],
+			"description": "Операции с кэшем"
+		},
+		{
+			"name": "Examples",
+			"item": [
+				{
+					"name": "YouTube - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group=youtube",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "youtube"
+								}
+							]
+						},
+						"description": "Пример: Получить все IP адреса для группы YouTube"
+					},
+					"response": []
+				},
+				{
+					"name": "OpenAI - IPv4 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group=openai&type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "openai"
+								},
+								{
+									"key": "type",
+									"value": "ipv4"
+								}
+							]
+						},
+						"description": "Пример: Получить только IPv4 адреса для группы OpenAI"
+					},
+					"response": []
+				},
+				{
+					"name": "GitHub Copilot - IPv6 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group=copilot&type=ipv6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "copilot"
+								},
+								{
+									"key": "type",
+									"value": "ipv6"
+								}
+							]
+						},
+						"description": "Пример: Получить только IPv6 адреса для группы GitHub Copilot"
+					},
+					"response": []
+				},
+				{
+					"name": "Instagram - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group=instagram",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "instagram"
+								}
+							]
+						},
+						"description": "Пример: Получить все IP адреса для группы Instagram"
+					},
+					"response": []
+				},
+				{
+					"name": "Cursor AI - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve?group=cursor",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "cursor"
+								}
+							]
+						},
+						"description": "Пример: Получить все IP адреса для группы Cursor AI"
+					},
+					"response": []
+				}
+			],
+			"description": "Готовые примеры запросов для популярных сервисов"
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "base_url",
+			"value": "http://localhost:8080",
+			"type": "string",
+			"description": "Базовый URL сервера Go IP Resolver"
+		},
+		{
+			"key": "group_name",
+			"value": "youtube",
+			"type": "string",
+			"description": "Название группы доменов для тестирования"
+		}
+	]
+}
