@@ -49,6 +49,13 @@ make run
 - **Resolve All Groups - IPv4 Only** - Получить только IPv4 для всех групп
 - **Resolve All Groups - IPv6 Only** - Получить только IPv6 для всех групп
 
+### 📄 Resolve Flat All
+- **Resolve Flat All - All IPs** - Плоский список всех IP всех групп
+- **Resolve Flat All - IPv4 Only** - Плоский список только IPv4 всех групп
+- **Resolve Flat All - IPv6 Only** - Плоский список только IPv6 всех групп
+- **Resolve Flat All - IPv4 Only (Short)** - Короткий эндпоинт для IPv4
+- **Resolve Flat All - IPv6 Only (Short)** - Короткий эндпоинт для IPv6
+
 ### 💾 Cache
 - **Get Cache Statistics** - Получить статистику кэша
 
@@ -58,6 +65,8 @@ make run
 - **GitHub Copilot - IPv6 Only** - Пример для Copilot (только IPv6)
 - **Instagram - All IPs** - Пример для Instagram
 - **Cursor AI - All IPs** - Пример для Cursor AI
+- **All Groups - Flat List IPv4 (Short)** - Короткий эндпоинт для IPv4 всех групп
+- **All Groups - Flat List IPv6 (Short)** - Короткий эндпоинт для IPv6 всех групп
 
 ## 🔧 Переменные окружения
 
