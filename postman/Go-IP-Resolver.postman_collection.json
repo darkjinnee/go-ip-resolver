@@ -261,6 +261,377 @@
 			"description": "Операции резолвинга IP адресов для групп доменов"
 		},
 		{
+			"name": "Resolve Flat",
+			"item": [
+				{
+					"name": "Resolve Flat - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat?group={{group_name}}",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								}
+							]
+						},
+						"description": "Получить плоский список всех IP адресов (IPv4 + IPv6) для указанной группы доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat?group=google",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "google"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "142.251.36.174\n2a00:1450:4016:808::200e\n142.251.36.164\n2a00:1450:4016:808::2004\n142.251.36.196\n2a00:1450:4016:809::2004\n142.251.36.227\n2a00:1450:4016:80a::2003"
+						}
+					]
+				},
+				{
+					"name": "Resolve Flat - IPv4 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat?group={{group_name}}&type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								},
+								{
+									"key": "type",
+									"value": "ipv4",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить плоский список только IPv4 адресов для указанной группы доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat?group=google&type=ipv4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "google"
+										},
+										{
+											"key": "type",
+											"value": "ipv4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "142.251.36.174\n142.251.36.164\n142.251.36.196\n142.251.36.227"
+						}
+					]
+				},
+				{
+					"name": "Resolve Flat - IPv6 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat?group={{group_name}}&type=ipv6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "{{group_name}}",
+									"description": "Название группы доменов"
+								},
+								{
+									"key": "type",
+									"value": "ipv6",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить плоский список только IPv6 адресов для указанной группы доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat?group=google&type=ipv6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat"
+									],
+									"query": [
+										{
+											"key": "group",
+											"value": "google"
+										},
+										{
+											"key": "type",
+											"value": "ipv6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "2a00:1450:4016:808::200e\n2a00:1450:4016:808::2004\n2a00:1450:4016:809::2004\n2a00:1450:4016:80a::2003"
+						}
+					]
+				}
+			],
+			"description": "Операции получения плоского списка IP адресов в формате text/plain"
+		},
+		{
+			"name": "Resolve Flat All",
+			"item": [
+				{
+					"name": "Resolve Flat All - All IPs",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat-all"
+							]
+						},
+						"description": "Получить плоский список всех IP адресов (IPv4 + IPv6) для всех групп доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat-all",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat-all"
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "142.251.36.174\n2a00:1450:4016:808::200e\n142.251.36.164\n2a00:1450:4016:808::2004\n140.82.121.3\n140.82.121.5\n185.199.109.133\n185.199.110.133\n185.199.111.133\n185.199.108.133\n..."
+						}
+					]
+				},
+				{
+					"name": "Resolve Flat All - IPv4 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat-all?type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat-all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ipv4",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить плоский список только IPv4 адресов для всех групп доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat-all?type=ipv4",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat-all"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "ipv4"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "142.251.36.174\n142.251.36.164\n142.251.36.196\n142.251.36.227\n140.82.121.3\n140.82.121.5\n185.199.109.133\n185.199.110.133\n185.199.111.133\n185.199.108.133\n..."
+						}
+					]
+				},
+				{
+					"name": "Resolve Flat All - IPv6 Only",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat-all?type=ipv6",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat-all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ipv6",
+									"description": "Тип IP адресов: ipv4, ipv6 или не указывать для всех"
+								}
+							]
+						},
+						"description": "Получить плоский список только IPv6 адресов для всех групп доменов в формате text/plain"
+					},
+					"response": [
+						{
+							"name": "Success Response",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{base_url}}/resolve-flat-all?type=ipv6",
+									"host": [
+										"{{base_url}}"
+									],
+									"path": [
+										"resolve-flat-all"
+									],
+									"query": [
+										{
+											"key": "type",
+											"value": "ipv6"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain; charset=utf-8"
+								}
+							],
+							"cookie": [],
+							"body": "2a00:1450:4016:808::200e\n2a00:1450:4016:808::2004\n2a00:1450:4016:809::2004\n2a00:1450:4016:80a::2003\n..."
+						}
+					]
+				}
+			],
+			"description": "Операции получения плоского списка IP адресов всех групп в формате text/plain"
+		},
+		{
 			"name": "Resolve All",
 			"item": [
 				{
@@ -544,6 +915,100 @@
 							]
 						},
 						"description": "Пример: Получить все IP адреса для группы Cursor AI"
+					},
+					"response": []
+				},
+				{
+					"name": "YouTube - Flat List (IPv4)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat?group=youtube&type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "youtube"
+								},
+								{
+									"key": "type",
+									"value": "ipv4"
+								}
+							]
+						},
+						"description": "Пример: Получить плоский список IPv4 адресов для группы YouTube"
+					},
+					"response": []
+				},
+				{
+					"name": "GitHub - Flat List (All IPs)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat?group=github",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat"
+							],
+							"query": [
+								{
+									"key": "group",
+									"value": "github"
+								}
+							]
+						},
+						"description": "Пример: Получить плоский список всех IP адресов для группы GitHub"
+					},
+					"response": []
+				},
+				{
+					"name": "All Groups - Flat List (IPv4)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat-all?type=ipv4",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat-all"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "ipv4"
+								}
+							]
+						},
+						"description": "Пример: Получить плоский список IPv4 адресов всех групп"
+					},
+					"response": []
+				},
+				{
+					"name": "All Groups - Flat List (All IPs)",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{base_url}}/resolve-flat-all",
+							"host": [
+								"{{base_url}}"
+							],
+							"path": [
+								"resolve-flat-all"
+							]
+						},
+						"description": "Пример: Получить плоский список всех IP адресов всех групп"
 					},
 					"response": []
 				}
