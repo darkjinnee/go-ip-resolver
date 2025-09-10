@@ -3,7 +3,17 @@
 # Переменные
 BINARY_NAME=ip-resolver
 BUILD_DIR=bin
+
+BINARY_NAME_REALISE=ip-resolver-linux
+BUILD_DIR_REALISE=bin/linux
+
 CONFIG_PATH=configs/domains.json
+
+# Релизная сборка
+realise:
+	@echo "Building realise $(BINARY_NAME_REALISE)..."
+	@mkdir -p $(BUILD_DIR_REALISE)
+	@go build -o $(BUILD_DIR_REALISE)/$(BINARY_NAME_REALISE) ./cmd/ip-resolver
 
 # Сборка
 build:
