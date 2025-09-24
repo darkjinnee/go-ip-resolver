@@ -17,8 +17,6 @@ services:
       - ./configs/domains.json:/app/configs/domains.json:ro
       # Монтируем директорию для логов (если приложение будет писать логи в файлы)
       - ./logs:/app/logs
-    networks:
-      - ip-resolver-network
     # Ограничения ресурсов для продакшн среды
     deploy:
       resources:
@@ -43,6 +41,5 @@ services:
         max-file: "3"
 
 networks:
-  ip-resolver-network:
+  default:
     driver: bridge
-    name: go-ip-resolver-network
