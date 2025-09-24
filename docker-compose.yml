@@ -1,0 +1,48 @@
+version: '3.8'
+
+services:
+  ip-resolver:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: go-ip-resolver
+    restart: unless-stopped
+    ports:
+      - "8080:8080"
+    environment:
+      - TZ=UTC
+      - GIN_MODE=release
+    volumes:
+      # Монтируем конфигурационный файл для возможности изменения без пересборки
+      - ./configs/domains.json:/app/configs/domains.json:ro
+      # Монтируем директорию для логов (если приложение будет писать логи в файлы)
+      - ./logs:/app/logs
+    networks:
+      - ip-resolver-network
+    # Ограничения ресурсов для продакшн среды
+    deploy:
+      resources:
+        limits:
+          cpus: '1.0'
+          memory: 512M
+        reservations:
+          cpus: '0.5'
+          memory: 256M
+    # Health check
+    healthcheck:
+      test: ["CMD", "wget", "--no-verbose", "--tries=1", "--spider", "http://localhost:8080/groups"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+    # Логирование
+    logging:
+      driver: "json-file"
+      options:
+        max-size: "10m"
+        max-file: "3"
+
+networks:
+  ip-resolver-network:
+    driver: bridge
+    name: go-ip-resolver-network
