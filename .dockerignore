@@ -42,7 +42,7 @@ Thumbs.db
 
 # Docker files
 Dockerfile*
-docker-compose*.yml
+compose.yml
 .dockerignore
 
 # Logs
