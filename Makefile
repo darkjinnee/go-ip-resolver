@@ -59,3 +59,30 @@ lint:
 # Полная проверка
 check: fmt lint test
 	@echo "All checks passed!"
+
+# Docker команды
+docker-build:
+	@echo "Сборка Docker образа..."
+	@docker build -t ip-resolver:latest .
+
+docker-run:
+	@echo "Запуск контейнера..."
+	@docker compose up -d
+
+docker-stop:
+	@echo "Остановка контейнера..."
+	@docker compose down
+
+docker-logs:
+	@echo "Просмотр логов..."
+	@docker compose logs -f ip-resolver
+
+docker-clean:
+	@echo "Очистка Docker ресурсов..."
+	@docker compose down -v
+	@docker rmi ip-resolver:latest || true
+	@docker system prune -f
+
+# Полная сборка с Docker
+docker-all: docker-build docker-run
+	@echo "Docker сборка и запуск завершены"
