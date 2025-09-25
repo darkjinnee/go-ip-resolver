@@ -2,6 +2,14 @@
 
 All notable changes to this project will be documented in this file. See [standard-version](https://github.com/conventional-changelog/standard-version) for commit guidelines.
 
+## [1.3.0](https://github.com/darkjinnee/go-ip-resolver/compare/v1.2.1...v1.3.0) (2025-09-25)
+
+
+### Features
+
+* add Docker commands to Makefile for building, running, and managing Docker containers ([529fe07](https://github.com/darkjinnee/go-ip-resolver/commit/529fe07e1340427b105bc6dc395563769a5b1509))
+* add Docker Compose configuration for ip-resolver service ([5eb17ef](https://github.com/darkjinnee/go-ip-resolver/commit/5eb17ef212789fc333511005bc8d46045f2e3468))
+
 ### [1.2.1](https://github.com/darkjinnee/go-ip-resolver/compare/v1.2.0...v1.2.1) (2025-09-24)
 
 ## [1.2.0](https://github.com/darkjinnee/go-ip-resolver/compare/v1.1.0...v1.2.0) (2025-09-10)
