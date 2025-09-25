@@ -10,8 +10,8 @@ RUN adduser -D -s /bin/sh appuser
 # Устанавливаем рабочую директорию
 WORKDIR /app
 
-# Копируем go.mod и go.sum для кэширования зависимостей
-COPY go.mod go.sum ./
+# Копируем go.mod для кэширования зависимостей
+COPY go.mod ./
 
 # Загружаем зависимости
 RUN go mod download
